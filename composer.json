@@ -1,0 +1,59 @@
+{
+    "name": "topthink/think",
+    "description": "the new thinkphp framework",
+    "type": "project",
+    "keywords": [
+        "framework",
+        "thinkphp",
+        "ORM"
+    ],
+    "homepage": "http://thinkphp.cn/",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "liu21st",
+            "email": "liu21st@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "ext-mbstring": "*",
+        "topthink/framework": "5.0.*",
+        "qt/qframe-auth": "^1.0",
+        "topthink/think-captcha": "^1.0",
+        "lvzhao1995/code-generate": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "application"
+        }
+    },
+    "extra": {
+        "think-path": "thinkphp",
+        "hooks": {
+            "pre-commit": [
+                "composer phpcs-fix",
+                "git add $(git diff --cached --name-only --diff-filter=ACM -- '*.php')"
+            ],
+            "post-merge": "composer update",
+            "pre-push": [
+                "composer phpcs-dry"
+            ]
+        }
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "require-dev": {
+        "brainmaestro/composer-git-hooks": "^2.8",
+        "friendsofphp/php-cs-fixer": "^2.15"
+    },
+    "scripts": {
+        "post-install-cmd": "cghooks add --ignore-lock",
+        "post-update-cmd": "cghooks update",
+        "phpcs-fix": "php-cs-fixer fix",
+        "phpcs-dry": "php-cs-fixer fix --dry-run"
+    }
+}

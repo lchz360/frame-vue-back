@@ -1,0 +1,10 @@
+.idea
+*.log
+runtime
+thinkphp
+vendor
+composer.lock
+generate.lock
+public/uploads
+env.php
+.php_cs.cache
